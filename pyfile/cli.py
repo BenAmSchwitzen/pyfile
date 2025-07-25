@@ -22,4 +22,6 @@ delete_parser.add_argument('--size', nargs=2, metavar=('MIN', 'MAX'), type=int, 
 delete_parser.add_argument('--name', nargs=2, metavar=('MIN', 'MAX'), type=int, help='Delete files whose name length is within the given interval', default=None)
 delete_parser.add_argument('--date', nargs=2, metavar=('START', 'END'), help='Delete files created within the given interval', default=None)
 delete_parser.add_argument('--file_types', nargs='+', metavar=('types', 'type_1'), help='Files whose type is not in the list will be ignored', default=None)
-delete_parser.add_argument('--only_empty', action='store_true', help='Ignore sizing conditions and delete only empty files')
+delete_parser.add_argument('--only_empty', action='store_true', help='Ignore the size condition and delete only empty files')
+
+args = parser.parse_args()

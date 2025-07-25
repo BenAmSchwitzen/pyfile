@@ -35,3 +35,11 @@ def get_file_size(file_path: str | Path) -> int:
         file_path = Path(file_path)
     return file_path.stat().st_size
 
+def get_file_type(file_path: str | Path) -> str:
+    """
+    Get the type of a file
+    """
+    if not isinstance(file_path, Path):
+        file_path = Path(file_path)
+    return file_path.suffix
+
