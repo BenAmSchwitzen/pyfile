@@ -37,6 +37,7 @@ def delete_files(dir_paths: list[str], size_interval: tuple[int, int] | None = N
                     continue
             if file_types and not utils.get_file_type(file_path) in file_types:
                 continue
+
             try:
                 if file_path.is_file():
                     file_path.unlink()
@@ -44,13 +45,6 @@ def delete_files(dir_paths: list[str], size_interval: tuple[int, int] | None = N
                     shutil.rmtree(file_path)
             except Exception:
                 print(f'Failed to delete {file_path} of {directory_path}')
-
-    
-
-# Adjusted parser Agrument-dsescirptions, added first file_operation and extend utils
-# dacnh will ich add main file machen und shon mal konsturkt aufbauen, 
-# dann testen
-# dann vermutlich custom errors
 
 
 
