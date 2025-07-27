@@ -24,4 +24,22 @@ delete_parser.add_argument('--date', nargs=2, metavar=('START', 'END'), help='De
 delete_parser.add_argument('--file_types', nargs='+', metavar=('types', 'type_1'), help='Files whose type is not in the list will be ignored', default=None)
 delete_parser.add_argument('--only_empty', action='store_true', help='Ignore the size condition and delete only empty files')
 
+filter_parser = subparsers.add_parser(
+    'filter',
+    help='Filter files based on specified conditions',
+    usage='pyfile filter <dir_path> [--size MIN MAX] [--name MIN MAX] [--date DD.MM.YY  DD.MM.YY] [--file_types FILE_TYPE_1 ... FILE_TYPE_i] [--only_empty] [(--keep | --move MOVE_DIR | --delete | --mark MARK_STRING)]',
+)
+
+filter_parser.add_argument('dir_path', help='Directory that will be scanned for files to be filtered', type=str)
+filter_parser.add_argument('--size', nargs=2, metavar=('MIN', 'MAX'), type=int, help='Filter files whose size is within the given interval', default=None)
+filter_parser.add_argument('--name', nargs=2, metavar=('MIN', 'MAX'), type=int, help='Filter files whose name length is within the given interval', default=None)
+filter_parser.add_argument('--date', nargs=2, metavar=('START', 'END'), help='Filter files created within the given interval', default=None)
+filter_parser.add_argument('--file_types', nargs='+', metavar=('types', 'type_1'), help='Files whose type is not in the list will be ignored', default=None)
+filter_parser.add_argument('--only_empty', action='store_true', help='Ignore the size condition and filter only empty files')
+
+filter_group = filter_parser.add_mutually_exclusive_group()
+filter_group.add_argument('--mark', nargs=1, action='store_true', help='Mark accepted files by putting a specified string at the end of their names')
+filter_group.add_argument('--move', nargs=1, help='Move accepted files to the given directory', type=str)
+filter_group.add_argument('--delete', action='store_true', help='Delete non-accepted files')
+
 args = parser.parse_args()
