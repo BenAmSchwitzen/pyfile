@@ -49,7 +49,7 @@ def delete_files(dir_paths: list[str], size_interval: tuple[int, int] | None = N
 
 def filter_files(dir_path: str | Path, size_interval: tuple[int, int] | None = None, name_interval: tuple[int, int] | None = None,
                  date_interval: tuple[str, str] | None = None, file_types: list[str] | None = None, only_empty: bool = False, 
-                 mark: str | None = None, move: str | None = None, delete: bool = False, ) -> None:
+                 mark: str | None = None, move: str | None = None, delete: bool = False) -> None:
     """
     Filter files based on specified conditions and perform a specified action
 

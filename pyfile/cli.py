@@ -5,7 +5,7 @@ import argparse
 
 
 parser = argparse.ArgumentParser(
-    description='pyfile — CLI tool for deleting, searching, renaming, copying and moving files.'
+    description='pyfile — CLI tool for deleting, filtering, sorting, grouping and moving files.'
 )
 
 subparsers = parser.add_subparsers(dest='command', help='Available commands')
@@ -42,5 +42,17 @@ filter_group = filter_parser.add_mutually_exclusive_group()
 filter_group.add_argument('--mark', action='store_true', help='Mark accepted files by putting a specified string at the end of their names')
 filter_group.add_argument('--move', nargs=1, help='Move accepted files to the given directory', type=str)
 filter_group.add_argument('--delete', action='store_true', help='Delete non-accepted files')
+
+sort_parser = subparsers.add_parser(
+    'sort',
+    aliases=['srt'],
+    help='Sort files in a specific way based on specified conditions',
+    usage='pyfile <dir_path> --way WAY_OF_SORTING',
+)
+
+sort_parser.add_argument('dir_path', help='Directory that will be scanned for files to be sorted', type=str)
+sort_parser.add_argument("--way", choices=["only_print", "mark"], required=True, help="Way of sorting to apply")
+
+
 
 args = parser.parse_args()
