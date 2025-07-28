@@ -26,6 +26,7 @@ delete_parser.add_argument('--only_empty', action='store_true', help='Ignore the
 
 filter_parser = subparsers.add_parser(
     'filter',
+    aliases=['fil'],
     help='Filter files based on specified conditions',
     usage='pyfile filter <dir_path> [--size MIN MAX] [--name MIN MAX] [--date DD.MM.YY  DD.MM.YY] [--file_types FILE_TYPE_1 ... FILE_TYPE_i] [--only_empty] [(--keep | --move MOVE_DIR | --delete | --mark MARK_STRING)]',
 )
@@ -38,7 +39,7 @@ filter_parser.add_argument('--file_types', nargs='+', metavar=('types', 'type_1'
 filter_parser.add_argument('--only_empty', action='store_true', help='Ignore the size condition and filter only empty files')
 
 filter_group = filter_parser.add_mutually_exclusive_group()
-filter_group.add_argument('--mark', nargs=1, action='store_true', help='Mark accepted files by putting a specified string at the end of their names')
+filter_group.add_argument('--mark', action='store_true', help='Mark accepted files by putting a specified string at the end of their names')
 filter_group.add_argument('--move', nargs=1, help='Move accepted files to the given directory', type=str)
 filter_group.add_argument('--delete', action='store_true', help='Delete non-accepted files')
 
