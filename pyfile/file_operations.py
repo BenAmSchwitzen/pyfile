@@ -81,4 +81,4 @@ def filter_files(dir_path: str | Path, size_interval: tuple[int, int] | None = N
                 else:
                     shutil.rmtree(file_path)
             except Exception:
-                print(f'Failed to delete {file_path.name} of {dir_path}')         
+                print(f'Failed to delete {file_path.name} of {dir_path}')

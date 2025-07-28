@@ -51,7 +51,9 @@ sort_parser = subparsers.add_parser(
 )
 
 sort_parser.add_argument('dir_path', help='Directory that will be scanned for files to be sorted', type=str)
-sort_parser.add_argument("--way", choices=["only_print", "mark"], required=True, help="Way of sorting to apply")
+sort_parser.add_argument('--way', choices=['only_print', 'mark'], required=True, help='Way of sorting to apply')
+sort_parser.add_argument('--criteria', choices=['name_length', 'size', 'date'], required=True, help='Criteria to sort files by')
+sort_parser.add_argument('--reverse', action='store_true', help='Sort in descending order')
 
 
 
